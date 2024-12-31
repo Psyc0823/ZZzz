@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunflower Animation</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css"> <!-- Ensure the correct path to style.css -->
+</head>
+<body>
+    <!-- Audio Element -->
+    <audio id="sunflowerAudio" src="songg.mp3" preload="auto"></audio>
+
+    <!-- Play/Pause Button -->
+    <div class="audio-controls" id="audioControls" style="display: none;">
+        <button id="playPauseButton">Play Audio</button>
+    </div>
+
+    <!-- Text between the Pause button and Sunflower -->
+    <div class="audio-text" id="audioText" style="display: none;">
+        <p> :0</p>
+    </div>
+
+    <!-- Modal asking the user to play the audio -->
+    <div class="modal" id="audioModal">
+        <div class="modal-content">
+            <h2>Do you want to play the sunflower audio?</h2>
+            <button id="startAudioButton">Play Audio</button>
+        </div>
+    </div>
+
+    <!-- Sunflower Animation -->
+    <div class="sun-flower__wrapper">
+        <div class="sun-flower">
+            <div class="sun-flower__circle">
+                <div class="sun-flower__circle--bottom">
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                </div>
+
+                <div class="sun-flower__circle--top">
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                    <div class="sun-flower__circle--small"></div>
+                </div>
+            </div>
+        </div>
+        <div class="sun-flower__line">
+            <div class="line"></div>
+            <div class="sun-flower__leaf sun-flower__leaf--1"></div>
+            <div class="sun-flower__leaf sun-flower__leaf--2"></div>
+            <div class="sun-flower__leaf sun-flower__leaf--3"></div>
+            <div class="sun-flower__leaf sun-flower__leaf--4"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const audio = document.getElementById('sunflowerAudio');
+        const audioControls = document.getElementById('audioControls');
+        const playPauseButton = document.getElementById('playPauseButton');
+        const startAudioButton = document.getElementById('startAudioButton');
+        const audioModal = document.getElementById('audioModal');
+        const audioText = document.getElementById('audioText');
+
+        // Show the modal when the page loads
+        window.onload = () => {
+            audioModal.style.display = 'flex';
+        };
+
+        // When the user clicks the "Play Audio" button on the modal
+        startAudioButton.addEventListener('click', () => {
+            audio.play();  // Start playing the audio
+            audioModal.style.display = 'none';  // Close the modal
+            audioControls.style.display = 'block';  // Show the play/pause button
+            audioText.style.display = 'block'; // Show the text
+            playPauseButton.textContent = 'Pause Audio';
+        });
+
+        // Play/pause functionality for the button
+        playPauseButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseButton.textContent = 'Pause Audio';
+            } else {
+                audio.pause();
+                playPauseButton.textContent = 'Play Audio';
+            }
+        });
+    </script>
+</body>
+</html>
